@@ -13,19 +13,20 @@ import com.wx.platform.config.CommonConfig;
 import com.wx.platform.config.MediaTypes;
 import com.wx.platform.handle.EventHandle;
 import com.wx.platform.handle.MessageHandle;
+import com.wx.platform.handle.event.ClickEventHandle;
 import com.wx.platform.handle.msg.ChatMessageHandle;
 
 @RestController
 @RequestMapping(value = "/")
-public class WxPublicController extends WeixinControllerSupport{
-	
+public class WxPublicController extends WeixinControllerSupport {
+
 	private static final String TOKEN = CommonConfig.TOKEN;
 	private static final String APPID = null;
 	private static final String AESKEY = null;
 
 	@RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaTypes.JSON_UTF_8)
-	public Map<String,Object> hello() {
-		Map<String,Object> result = new HashMap<String, Object>();
+	public Map<String, Object> hello() {
+		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("example", "hello");
 		return result;
 	}
@@ -33,16 +34,17 @@ public class WxPublicController extends WeixinControllerSupport{
 	@Override
 	protected List<MessageHandle> initMessageHandles() {
 		List<MessageHandle> handles = new ArrayList<MessageHandle>();
-        handles.add(new ChatMessageHandle());
-        return handles;
+		handles.add(new ChatMessageHandle());
+		return handles;
 	}
 
 	@Override
 	protected List<EventHandle> initEventHandles() {
-		// TODO Auto-generated method stub
-		return null;
+		List<EventHandle> handles = new ArrayList<EventHandle>();
+		handles.add(new ClickEventHandle());
+		return handles;
 	}
-	
+
 	@Override
 	protected String getToken() {
 		return TOKEN;
