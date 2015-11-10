@@ -4,7 +4,8 @@ ApplicationConfiguration = (function() {
     var applicationModuleName = 'wx-public-platform';
     var applicationModuleVendorDependencies = [
         'ui.router',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ngResource'
     ];
 
     // Add a new vertical module

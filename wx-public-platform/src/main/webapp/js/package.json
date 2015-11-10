@@ -1,0 +1,12 @@
+{
+  "name": "wx-public-platform",
+  "version": "1.0.0",
+  "description": "wx-public-platform",
+  "main": "application.js",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^1.12.0"
+  }
+}
