@@ -8,7 +8,7 @@ import com.wx.platform.handle.msg.ChatMessageHandle;
 import com.wx.platform.message.BaseMsg;
 import com.wx.platform.message.req.MenuEvent;
 
-public class ClickEventHandle implements EventHandle<MenuEvent> {
+public class SearchGroupEventHandle implements EventHandle<MenuEvent> {
 
 	private static final Logger logger = LoggerFactory.getLogger(ChatMessageHandle.class);
 
@@ -20,12 +20,13 @@ public class ClickEventHandle implements EventHandle<MenuEvent> {
 
 	@Override
 	public boolean beforeHandle(MenuEvent event) {
-		// TODO Auto-generated method stub
-		logger.info(event.getMsgType());
-		logger.info(event.getEvent());
-		logger.info(event.getEventKey());
-
-		return false;
+		if (event.getEventKey() == "search_group"){
+			logger.info("search_group");
+			return true;
+		}
+		
+		else
+			return false;
 	}
 
 }

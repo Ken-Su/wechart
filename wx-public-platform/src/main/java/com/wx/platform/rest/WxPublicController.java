@@ -13,8 +13,12 @@ import com.wx.platform.config.CommonConfig;
 import com.wx.platform.config.MediaTypes;
 import com.wx.platform.handle.EventHandle;
 import com.wx.platform.handle.MessageHandle;
-import com.wx.platform.handle.event.ClickEventHandle;
+import com.wx.platform.handle.event.CreateGroupEventHandle;
+import com.wx.platform.handle.event.GroupQrCodeEventHandle;
+import com.wx.platform.handle.event.SearchGroupEventHandle;
 import com.wx.platform.handle.msg.ChatMessageHandle;
+import com.wx.platform.handle.msg.CreateGroupMessageHandle;
+import com.wx.platform.handle.msg.GroupIntroMessageHandle;
 
 @RestController
 @RequestMapping(value = "/")
@@ -34,6 +38,8 @@ public class WxPublicController extends WeixinControllerSupport {
 	@Override
 	protected List<MessageHandle> initMessageHandles() {
 		List<MessageHandle> handles = new ArrayList<MessageHandle>();
+		handles.add(new CreateGroupMessageHandle());
+		handles.add(new GroupIntroMessageHandle());
 		handles.add(new ChatMessageHandle());
 		return handles;
 	}
@@ -41,7 +47,9 @@ public class WxPublicController extends WeixinControllerSupport {
 	@Override
 	protected List<EventHandle> initEventHandles() {
 		List<EventHandle> handles = new ArrayList<EventHandle>();
-		handles.add(new ClickEventHandle());
+		handles.add(new CreateGroupEventHandle());
+		handles.add(new SearchGroupEventHandle());
+		handles.add(new GroupQrCodeEventHandle());
 		return handles;
 	}
 
