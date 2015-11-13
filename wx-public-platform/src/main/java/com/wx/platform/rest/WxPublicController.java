@@ -14,11 +14,15 @@ import com.wx.platform.config.MediaTypes;
 import com.wx.platform.handle.EventHandle;
 import com.wx.platform.handle.MessageHandle;
 import com.wx.platform.handle.event.CreateGroupEventHandle;
+import com.wx.platform.handle.event.CreateItemEventHandle;
 import com.wx.platform.handle.event.GroupQrCodeEventHandle;
+import com.wx.platform.handle.event.ScanCodeEventHandle;
 import com.wx.platform.handle.event.SearchGroupEventHandle;
 import com.wx.platform.handle.msg.ChatMessageHandle;
 import com.wx.platform.handle.msg.CreateGroupMessageHandle;
+import com.wx.platform.handle.msg.CreateItemMessageHandle;
 import com.wx.platform.handle.msg.GroupIntroMessageHandle;
+import com.wx.platform.handle.msg.ItemOwnerMessageHandle;
 
 @RestController
 @RequestMapping(value = "/")
@@ -41,6 +45,8 @@ public class WxPublicController extends WeixinControllerSupport {
 		handles.add(new CreateGroupMessageHandle());
 		handles.add(new GroupIntroMessageHandle());
 		handles.add(new ChatMessageHandle());
+		handles.add(new CreateItemMessageHandle());
+		handles.add(new ItemOwnerMessageHandle());
 		return handles;
 	}
 
@@ -50,6 +56,8 @@ public class WxPublicController extends WeixinControllerSupport {
 		handles.add(new CreateGroupEventHandle());
 		handles.add(new SearchGroupEventHandle());
 		handles.add(new GroupQrCodeEventHandle());
+		handles.add(new ScanCodeEventHandle());
+		handles.add(new CreateItemEventHandle());
 		return handles;
 	}
 
