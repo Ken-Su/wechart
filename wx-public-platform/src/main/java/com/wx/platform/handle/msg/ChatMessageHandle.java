@@ -24,7 +24,7 @@ public class ChatMessageHandle implements MessageHandle<TextReqMsg> {
 	private static final Logger logger = LoggerFactory.getLogger(ChatMessageHandle.class);
 	
 	@Autowired
-	private BaseDao<Menu> baseDao;	//作为例子， Menu是实际情况的bean
+	private BaseDao baseDao;	//作为例子， Menu是实际情况的bean
 
 	@Override
 	public BaseMsg handle(TextReqMsg message) {
