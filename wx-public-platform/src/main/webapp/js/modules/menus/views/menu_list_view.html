@@ -1,5 +1,18 @@
 <section>
   <div data-ng-controller="MenuController" data-ng-init="getMenu()">
     <p>{{menus}}</p>
+
+    <div class="btn-group dropup">
+      <button type="button" class="btn btn-default">Dropup</button>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+      </ul>
+    </div>
   </div>
 </section>
