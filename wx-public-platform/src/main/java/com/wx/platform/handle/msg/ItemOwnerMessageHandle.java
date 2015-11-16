@@ -13,9 +13,9 @@ public class ItemOwnerMessageHandle implements MessageHandle<TextReqMsg> {
 	}
 	@Override
 	public boolean beforeHandle(TextReqMsg message) {
-		if (message.getContent().contains("IO")) {
-			return true;
-		}
+//		if (message.getContent().contains("IO")) {
+//			return true;
+//		}
 		return false;
 	}
 }

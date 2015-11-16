@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.wx.platform.handle.EventHandle;
 import com.wx.platform.handle.msg.ChatMessageHandle;
+import com.wx.platform.handle.msg.CreateItemMessageHandle;
 import com.wx.platform.message.BaseMsg;
 import com.wx.platform.message.TextMsg;
 import com.wx.platform.message.req.MenuEvent;
