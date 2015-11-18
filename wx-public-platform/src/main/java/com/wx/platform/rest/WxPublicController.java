@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ import com.wx.platform.handle.msg.ChatMessageHandle;
 import com.wx.platform.handle.msg.CreateGroupMessageHandle;
 import com.wx.platform.handle.msg.CreateItemMessageHandle;
 import com.wx.platform.handle.msg.GroupIntroMessageHandle;
-import com.wx.platform.handle.msg.ItemOwnerMessageHandle;
+import com.wx.platform.util.BaseDao;
 
 @RestController
 @RequestMapping(value = "/")
@@ -31,6 +32,9 @@ public class WxPublicController extends WeixinControllerSupport {
 	private static final String TOKEN = CommonConfig.TOKEN;
 	private static final String APPID = null;
 	private static final String AESKEY = null;
+	
+	@Autowired
+	private BaseDao baseDao;
 
 	@RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaTypes.JSON_UTF_8)
 	public Map<String, Object> hello() {
@@ -45,8 +49,7 @@ public class WxPublicController extends WeixinControllerSupport {
 		handles.add(new CreateGroupMessageHandle());
 		handles.add(new GroupIntroMessageHandle());
 		handles.add(new ChatMessageHandle());
-		handles.add(new CreateItemMessageHandle());
-		handles.add(new ItemOwnerMessageHandle());
+		handles.add(new CreateItemMessageHandle(baseDao));
 		return handles;
 	}
 
