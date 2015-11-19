@@ -6,22 +6,28 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.wx.platform.entity.Item;
 import com.wx.platform.handle.EventHandle;
-import com.wx.platform.handle.msg.ChatMessageHandle;
 import com.wx.platform.message.BaseMsg;
 import com.wx.platform.message.TextMsg;
 import com.wx.platform.message.req.MenuEvent;
 import com.wx.platform.util.BaseDao;
 
+@Component
 public class ItemEventHandle implements EventHandle<MenuEvent> {
-	private static final Logger logger = LoggerFactory.getLogger(ChatMessageHandle.class);
+	
+	private static final Logger logger = LoggerFactory.getLogger(ItemEventHandle.class);
+	
+	@Autowired
 	private BaseDao baseDao;
-	public ItemEventHandle(BaseDao baseDao) {
+	
+	/*public ItemEventHandle(BaseDao baseDao) {
 		super();
 		this.baseDao = baseDao;
-	}
+	}*/
 
 	@Override
 	public BaseMsg handle(MenuEvent event) {

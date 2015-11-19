@@ -1,6 +1,5 @@
 package com.wx.platform.rest;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,16 +13,6 @@ import com.wx.platform.config.CommonConfig;
 import com.wx.platform.config.MediaTypes;
 import com.wx.platform.handle.EventHandle;
 import com.wx.platform.handle.MessageHandle;
-import com.wx.platform.handle.event.CreateGroupEventHandle;
-import com.wx.platform.handle.event.ItemEventHandle;
-import com.wx.platform.handle.event.GroupQrCodeEventHandle;
-import com.wx.platform.handle.event.ScanCodeEventHandle;
-import com.wx.platform.handle.event.SearchGroupEventHandle;
-import com.wx.platform.handle.msg.ChatMessageHandle;
-import com.wx.platform.handle.msg.CreateGroupMessageHandle;
-import com.wx.platform.handle.msg.ItemMessageHandle;
-import com.wx.platform.handle.msg.GroupIntroMessageHandle;
-import com.wx.platform.util.BaseDao;
 
 @RestController
 @RequestMapping(value = "/")
@@ -33,35 +22,43 @@ public class WxPublicController extends WeixinControllerSupport {
 	private static final String APPID = null;
 	private static final String AESKEY = null;
 	
+	/*@Autowired
+	private BaseDao baseDao;*/
+	
 	@Autowired
-	private BaseDao baseDao;
+	private List<MessageHandle> messageHandles;
+	
+	@Autowired
+	private List<EventHandle> eventHandles;
 
 	@RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaTypes.JSON_UTF_8)
 	public Map<String, Object> hello() {
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("example", "hello");
+		messageHandles.size();
+		eventHandles.size();
 		return result;
 	}
 
 	@Override
 	protected List<MessageHandle> initMessageHandles() {
-		List<MessageHandle> handles = new ArrayList<MessageHandle>();
+		/*List<MessageHandle> handles = new ArrayList<MessageHandle>();
 		handles.add(new CreateGroupMessageHandle());
 		handles.add(new GroupIntroMessageHandle());
 		handles.add(new ChatMessageHandle());
-		handles.add(new ItemMessageHandle(baseDao));
-		return handles;
+		handles.add(new ItemMessageHandle(baseDao));*/
+		return messageHandles;
 	}
 
 	@Override
 	protected List<EventHandle> initEventHandles() {
-		List<EventHandle> handles = new ArrayList<EventHandle>();
+		/*List<EventHandle> handles = new ArrayList<EventHandle>();
 		handles.add(new CreateGroupEventHandle());
 		handles.add(new SearchGroupEventHandle());
 		handles.add(new GroupQrCodeEventHandle());
 		handles.add(new ScanCodeEventHandle());
-		handles.add(new ItemEventHandle(baseDao));
-		return handles;
+		handles.add(new ItemEventHandle(baseDao));*/
+		return eventHandles;
 	}
 
 	@Override

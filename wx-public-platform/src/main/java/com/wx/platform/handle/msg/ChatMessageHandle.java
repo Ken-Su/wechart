@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.wx.platform.api.MenuAPI;
 import com.wx.platform.api.config.ApiConfig;
@@ -19,6 +20,7 @@ import com.wx.platform.message.TextMsg;
 import com.wx.platform.message.req.TextReqMsg;
 import com.wx.platform.util.BaseDao;
 
+@Component
 public class ChatMessageHandle implements MessageHandle<TextReqMsg> {
 
 	private static final Logger logger = LoggerFactory.getLogger(ChatMessageHandle.class);

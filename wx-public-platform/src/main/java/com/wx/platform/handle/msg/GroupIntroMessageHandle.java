@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import com.wx.platform.api.MenuAPI;
 import com.wx.platform.api.config.ApiConfig;
@@ -18,6 +19,7 @@ import com.wx.platform.message.TextMsg;
 import com.wx.platform.message.req.EventType;
 import com.wx.platform.message.req.TextReqMsg;
 
+@Component
 public class GroupIntroMessageHandle implements MessageHandle<TextReqMsg> {
 
 	private static final Logger logger = LoggerFactory.getLogger(GroupIntroMessageHandle.class);

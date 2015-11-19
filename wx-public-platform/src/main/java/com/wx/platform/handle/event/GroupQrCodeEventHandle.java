@@ -2,12 +2,14 @@ package com.wx.platform.handle.event;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import com.wx.platform.handle.EventHandle;
 import com.wx.platform.handle.msg.ChatMessageHandle;
 import com.wx.platform.message.BaseMsg;
 import com.wx.platform.message.req.QrCodeEvent;
 
+@Component
 public class GroupQrCodeEventHandle implements EventHandle<QrCodeEvent> {
 	private static final Logger logger = LoggerFactory.getLogger(ChatMessageHandle.class);
 	@Override

@@ -8,6 +8,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.wx.platform.entity.Item;
 import com.wx.platform.handle.MessageHandle;
@@ -16,16 +17,17 @@ import com.wx.platform.message.TextMsg;
 import com.wx.platform.message.req.TextReqMsg;
 import com.wx.platform.util.BaseDao;
 
+@Component
 public class ItemMessageHandle implements MessageHandle<TextReqMsg> {
 	
-
+	@Autowired
 	private BaseDao baseDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ItemMessageHandle.class);
-	public ItemMessageHandle(BaseDao baseDao) {
+	/*public ItemMessageHandle(BaseDao baseDao) {
 		super();
 		this.baseDao = baseDao;
-	}
+	}*/
 
 	private Item item = new Item();
 
