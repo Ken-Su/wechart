@@ -63,8 +63,10 @@ public class ItemMessageHandle implements MessageHandle<TextReqMsg> {
 			tm.setContent(content);
 			return tm;
 		} else if (message.getContent().toUpperCase().contains("DI") && message.getContent().length()>2) {
-			baseDao.commonUpdate("delete from item where id=? and userid=?", message.getContent().substring(2),message.getFromUserName());
-			tm.setContent("删除成功");
+			if(baseDao.commonUpdate("delete from item where id=? and userid=?", message.getContent().substring(2),message.getFromUserName())!=0)
+				tm.setContent("删除成功");
+			else
+				tm.setContent("刪除失败");
 			return tm;
 		} else{
 			tm.setContent("请重试");

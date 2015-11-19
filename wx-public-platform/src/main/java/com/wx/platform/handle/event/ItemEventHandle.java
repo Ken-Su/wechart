@@ -25,7 +25,7 @@ public class ItemEventHandle implements EventHandle<MenuEvent> {
 
 	@Override
 	public BaseMsg handle(MenuEvent event) {
-		TextMsg tm = new TextMsg("请发送NI+物品信息，例如：NI我有一只小毛炉我从来也不骑");
+		TextMsg tm = new TextMsg();
 		if(event.getEventKey().equals("create_item")){
 			return tm;
 		}else if (event.getEventKey().equals("search_item")){
