@@ -19,7 +19,8 @@ public class PublicBusAPI {
 	private static final Logger LOG = LoggerFactory.getLogger(PublicBusAPI.class);	
 	
 
-	public static Map<String,Object> getNextBus(Integer routeNumber, String station){
+	public static String getNextBus(String routeNumber, String station){
+		StringBuffer nextbusResult = new StringBuffer();
 		List<Map> busResult = getBusResult(routeNumber);
 		
 		List<Map> busStations = PublicBusAPI.getBusStation(busResult.get(0).get("Id").toString());
@@ -31,17 +32,21 @@ public class PublicBusAPI {
 		Map<String,Object> reverseMinDistanceResult = getMinDistance(reverseBusStations, reverseNextBusStations, station);
 		
 		if(minDistanceResult == null){
+			nextbusResult.append(busResult.get(0).get("Name").toString()+ "往"+busResult.get(0).get("ToStation").toString()+"方向没车了！！！杯具了！！！\n");
 			System.out.println("杯具了！！！没车了！！！");
 		}else{
+			nextbusResult.append(busResult.get(0).get("Name").toString()+ "往"+busResult.get(0).get("ToStation").toString()+"方向的下一趟车离"+station+"还有"+minDistanceResult.get("minNext")+"站,目前在"+minDistanceResult.get("CurrentStation")+"\n");
 			System.out.println(busResult.get(0).get("Name").toString()+ "往"+busResult.get(0).get("ToStation").toString()+"方向的下一趟车离"+station+"还有"+minDistanceResult.get("minNext")+"站,目前在"+minDistanceResult.get("CurrentStation"));
 		}
 		
 		if(reverseMinDistanceResult == null){
+			nextbusResult.append(busResult.get(1).get("Name").toString()+ "往"+busResult.get(1).get("ToStation").toString()+"方向没车了！！！杯具了！！！\n");
 			System.out.println("杯具了！！！没车了！！！");
 		}else{
+			nextbusResult.append(busResult.get(1).get("Name").toString()+ "往"+busResult.get(1).get("ToStation").toString()+"方向的下一趟车离"+station+"还有"+reverseMinDistanceResult.get("minNext")+"站,目前在"+reverseMinDistanceResult.get("CurrentStation")+"\n");
 			System.out.println(busResult.get(1).get("Name").toString()+ "往"+busResult.get(1).get("ToStation").toString()+"方向的下一趟车离"+station+"还有"+reverseMinDistanceResult.get("minNext")+"站,目前在"+reverseMinDistanceResult.get("CurrentStation"));
 		}
-		return null;
+		return nextbusResult.toString();
 	}
 	
 	private static Map<String,Object> getMinDistance(List<Map> busStations, List<Map> nextBusStations, String station){
@@ -85,7 +90,7 @@ public class PublicBusAPI {
 		}
 	}
 	
-	public static List<Map> getBusResult(Integer routeNumber){
+	public static List<Map> getBusResult(String routeNumber){
 		BeanUtil.requireNonNull(routeNumber, "routeNumber is null");
 		String url = "http://120.25.149.162/BusLine/WS.asmx/SearchLine";
 		String busJson = executePost(url, "{key:'"+routeNumber+"'}");
@@ -130,6 +135,6 @@ public class PublicBusAPI {
 		List<Map> busStations = PublicBusAPI.getBusStation(busResult.get(0).get("Id").toString());
 		List<Map> nextBusStations = PublicBusAPI.getNextBusStation(busResult.get(0).get("FromStation").toString(), busResult.get(0).get("Name").toString());
 		System.out.println(nextBusStations);*/
-		PublicBusAPI.getNextBus(69, "海怡湾畔");
+		PublicBusAPI.getNextBus("k2", "海怡湾畔");
 	}
 }
