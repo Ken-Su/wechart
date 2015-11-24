@@ -2,6 +2,6 @@ package com.wx.platform.config;
 
 public class CommonConfig {
 	public static final String TOKEN = "4cQxfs9rsSdpf";
-	public static final String APPID = "wx0c77def185927b40";
-	public static final String SECRET = "417cd1d7f70717c85ac88ad4e206f424";
+	public static final String APPID = "wx732b0d527b66fd81";
+	public static final String SECRET = "d4624c36b6795d1d99dcf0547af5443d";
 }
