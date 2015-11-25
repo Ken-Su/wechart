@@ -33,6 +33,7 @@ public class ItemEventHandle implements EventHandle<MenuEvent> {
 	public BaseMsg handle(MenuEvent event) {
 		TextMsg tm = new TextMsg();
 		if(event.getEventKey().equals("create_item")){
+			tm.setContent("请发送NI+物品信息+空格+你的联系方式，例如：NI变形金刚 136xxxxxx");
 			return tm;
 		}else if (event.getEventKey().equals("search_item")){
 			tm.setContent("请发送SI+物品信息来进行搜索，例如：SI变形金刚");
